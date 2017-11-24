@@ -1,0 +1,33 @@
+{
+  "name": "webpack_bundle",
+  "version": "1.0.0",
+  "description": "a test for webpack functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "dev": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server --env development\"",
+    "build": "webpack --env production",
+    "lint:js": "eslint app/ webpack.*.js --cache"
+  },
+  "keywords": [
+    "webpack",
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "babel-loader": "8.0.0-beta.0",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.10.0",
+    "eslint-loader": "^1.9.0",
+    "favicons-webpack-plugin": "^0.0.7",
+    "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.12.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3",
+    "webpack-merge": "^4.1.1"
+  }
+}
