@@ -3,23 +3,12 @@
 const parts = require('./webpack.parts')
 const merge = require('webpack-merge')
 
-
-// export developmentConfig = () => {
-//   const config ={
-//     devServer
-//   }
-// }
-
-exports.developmentConf = merge([
+module.exports = merge([
+  {
+    devtool: 'inline-source-map',
+  },
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT,
   }),
 ])
-
-// export default merge([
-//   parts.devServer({
-//     host: process.env.HOST,
-//     port: process.env.PORT,
-//   }),
-// ])

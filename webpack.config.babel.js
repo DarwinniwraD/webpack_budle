@@ -7,14 +7,14 @@
 
 // import parts from './config/webpack.parts'
 
-const developmentConf = require('./config/webpack.development')
+const developmentConfig = require('./config/webpack.development');
 const path = require('path');
-const webpack = require('webpack')
-const merge = require('webpack-merge')
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-const parts = require('./config/webpack.parts')
+const parts = require('./config/webpack.parts');
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -92,16 +92,14 @@ const commonConfig = merge([
       }),
     ],
   },
-  parts.lintJavaScript({include: PATHS.app}),
+  parts.lintJavaScript({ include: PATHS.app }),
   parts.loadCSS(),
   parts.babelConfig({
     include: path.resolve('app'),
     options: {
-      babelrc: false,
-      presets: [["env", {modules: false}]]
-    }
-  })
-])
+    },
+  }),
+]);
 
 // const developmentConf = merge([
 //   {
@@ -121,11 +119,11 @@ const commonConfig = merge([
 
 // const productionConf = () => commonConfig;
 const productionConf = merge([
-])
+]);
 
 // const developmentConf = () => {
 //   const config = {
-    
+
 //   };
 //   return Object.assign(
 //     {},
@@ -136,10 +134,9 @@ const productionConf = merge([
 
 
 module.exports = (env) => {
-  console.log('env0000000', env);
+  console.log('ENVL=>', env);
   if (env === 'production') {
     return merge(commonConfig, productionConf);
   }
-  // return developmentConf();
-  return merge(commonConfig, developmentConf);
+  return merge(commonConfig, developmentConfig);
 };
