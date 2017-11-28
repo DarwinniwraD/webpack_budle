@@ -1,0 +1,7 @@
+/*@import "~bootstrap/less/bootstrap";*/
+@import "./common";
+
+body {
+  background-color: cornsilk;
+  display: flex;
+}
