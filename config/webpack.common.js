@@ -4,6 +4,11 @@
 // })
 
 const path = require('path');
+const PATHS = {
+  app: path.join(process.cwd(), 'app'),
+  build: path.join(process.cwd(), 'build'),
+};
+
 
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,6 +32,12 @@ module.exports = merge([
     options: {
     },
   }),
+  parts.loadFonts({
+    options: {
+      name: "[name].[ext]",
+    },
+  }),
+  parts.loadJavaScript({ include: PATHS.app }),
 ]);
 
 // const commonConfig = {

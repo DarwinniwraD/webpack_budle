@@ -1,0 +1,37 @@
+@import "./base/_base";
+// @import '../sprite/_sprite';
+
+p {
+  font-size: 10
+}
+div[class^="img_container"] {
+  width: 750px;
+  height: 750px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.img_container_1{
+  background-image: image('icon_1.png')
+  // @include sprite($icon_1)
+  // background-image: url('../images/icon_1.png')
+}
+.img_container_2{
+  background-image: image('icon_2.png')
+  // background-image: url('../images/icon_2.png')
+}
+.img_container_3{
+  background-image: image('icon_3.png')
+  // background-image: url('../images/icon_3.png')
+}
+.img_container_4{
+  background-image: image('icon_4.png')
+  // background-image: url('../images/icon_4.png')
+}
+.img_container_5{
+  // background-image: image('icon_5.png')
+  background-image: url('../images/icon_5.png')
+}

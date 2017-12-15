@@ -1,5 +1,15 @@
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const PurifyCSSPlugin = require("purifycss-webpack");
+const PurifyCSSPlugin = require('purifycss-webpack');
+const SpritesmithPlugin = require('webpack-spritesmith');
+
+const path = require('path');
+
+exports.extractBundles = bundles => ({
+  plugins: bundles.map(
+    bundle => new webpack.optimize.CommonsChunkPlugin(bundle)
+  )
+})
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -28,7 +38,6 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
       include,
       exclude,
       enforce: 'pre',
-
       loader: 'eslint-loader',
       options,
     } ],
@@ -51,15 +60,51 @@ exports.loadCSS = ({ include, exclude} = {}) => ({
               importLoaders: 1,
             },
           },
+          'resolve-url-loader',
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,
+              remPrecision: 5
+            }
+          },
           'sass-loader',
         ],
       },
+      // {
+      //   test: /\.css$/,
+      //   include,
+      //   exclude,
+      //   loaders: 'style-loader!css-loader?' + JSON.stringify({importLoaders: 1}) + 'importLoaders=1!px2rem-loader?' + JSON.stringify({remUnit:75, remPrecision:8}) + '!sass-loader'
+      // }
+      // {
+      //   test: /\.png$/,
+      //   loaders: ['file-loader?name=assets/sprite/[hash].[ext]'],
+      // },
       // {
       //   test: /\.css$/,
       //   loader: 'sass-loader',
       // }
     ],
   },
+  resolve: {
+    modules: ['node_modules', 'spritesmith-generated'],
+  },
+  plugins: [
+    new SpritesmithPlugin({
+      src: {
+        cwd: path.resolve(process.cwd(), 'app/assets/images'),
+        glob: '*.png',
+      },
+      target: {
+        image: path.resolve(process.cwd(), 'app/assets/sprite/sprite.png'),
+        css: path.resolve(process.cwd(), 'app/assets/sprite/_sprite.scss'),
+      },
+      apiOptions: {
+        cssImageRef: '~sprite.png',
+      },
+    }),
+  ],
 });
 
 exports.extractCSS = ({include, exclude, use}) => {
@@ -84,15 +129,30 @@ exports.extractCSS = ({include, exclude, use}) => {
 };
 
 exports.autoprefix = () => ({
-  loader: "postcss-loader",
+  loader: 'postcss-loader',
   options: {
-    plugins: () => [require("autoprefixer")()],
+    plugins: () => [require('autoprefixer')()],
   },
 });
 
 exports.purifyCSS = ({path}) => ({
-  plugins: [new PurifyCSSPlugin({path})]
-})
+  plugins: [new PurifyCSSPlugin({path})],
+});
+
+//更多可选配置参看https://www.npmjs.com/package/url-loader
+exports.loadImage = ({include, exclude, options} = {}) => ({
+  module: {
+    rules: [{
+      test: /\.(png|jpg|svg)$/,
+      include,
+      exclude,
+      use: {
+        loader: 'url-loader',
+        options,
+      },
+    }],
+  },
+});
 
 exports.babelConfig = ({ include, options }) => ({
   module: {
@@ -107,3 +167,39 @@ exports.babelConfig = ({ include, options }) => ({
     }],
   },
 });
+
+exports.loadFonts = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        // Capture eot, ttf, woff, and woff2
+        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        include,
+        exclude,
+        use: {
+          loader: "file-loader",
+          options,
+        },
+      },
+    ],
+  },
+});
+
+exports.loadJavaScript = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include,
+        exclude,
+        use: "babel-loader",
+      },
+    ],
+  },
+});
+
+exports.generateSourceMaps = ({ type }) => ({
+  devtool: type,
+});
+
+

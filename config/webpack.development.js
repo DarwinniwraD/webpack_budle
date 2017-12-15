@@ -4,14 +4,19 @@ const parts = require('./webpack.parts')
 const merge = require('webpack-merge')
 
 module.exports = merge([
-  {
-    devtool: 'inline-source-map',
-  },
+  // {
+  //   devtool: 'inline-source-map',
+  // },
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT,
   }),
-  parts.loadCSS()
+  parts.loadCSS(),
+  parts.loadImage(),
+  parts.generateSourceMaps({
+    type: "cheap-module-eval-source-map"
+    // type: "source-map"
+  }),
 ])
 
 // const developmentConf = merge([
