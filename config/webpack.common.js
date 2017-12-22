@@ -11,7 +11,7 @@ const PATHS = {
 
 
 const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const parts = require('./webpack.parts');
 
@@ -19,12 +19,17 @@ module.exports = merge([
   {
     devServer: {
       port: 9000,
+      contentBase: path.join(process.cwd(), "public")
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        title: 'webpack bundle from cli',
-      }),
-    ],
+    // plugins: [
+    // new HtmlWebpackPlugin({
+    //     title: 'webpack bundle from cli',
+    //   }),
+    //   // new HtmlWebpackPlugin({
+    //   //   chunksSortMode: 'manual',
+    //   //   chunks: ['manifest', 'vendor', 'common', 'main', 'header']
+    //   // })
+    // ],
   },
   // parts.loadCSS(),
   parts.babelConfig({
@@ -34,7 +39,7 @@ module.exports = merge([
   }),
   parts.loadFonts({
     options: {
-      name: "[name].[ext]",
+      name: "[name].[hash:8].[ext]",
     },
   }),
   parts.loadJavaScript({ include: PATHS.app }),

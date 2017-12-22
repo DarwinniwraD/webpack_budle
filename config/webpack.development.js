@@ -7,6 +7,11 @@ module.exports = merge([
   // {
   //   devtool: 'inline-source-map',
   // },
+  {
+    node: {
+      __dirname: false
+    }
+  },
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT,

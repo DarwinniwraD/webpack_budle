@@ -1,0 +1,173 @@
+{
+  "html-webpack-plugin for \"index.html\"": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/webpack/buildin/module.js": "3IRH",
+          "node_modules/webpack/buildin/global.js": "DuR2",
+          "node_modules/lodash/lodash.js": "M4fF",
+          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-plugin/default_index.ejs": "a/t9"
+        },
+        "usedIds": {
+          "3IRH": "3IRH",
+          "DuR2": "DuR2",
+          "M4fF": "M4fF",
+          "a/t9": "a/t9"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "1": 1
+        }
+      }
+    }
+  ],
+  "extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js??ref--6-4!app/assets/css/main.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js?{}!app/assets/css/main.css": "/cQY",
+          "node_modules/url-loader/index.js??ref--7!app/assets/images/icon_3.png": "9uxZ",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f",
+          "node_modules/url-loader/index.js??ref--7!app/assets/images/icon_4.png": "IIP5",
+          "node_modules/url-loader/index.js??ref--7!app/assets/images/icon_2.png": "aKF9",
+          "node_modules/url-loader/index.js??ref--7!app/assets/images/icon_1.png": "gjOB",
+          "node_modules/url-loader/index.js??ref--7!app/assets/images/icon_5.png": "s+CG"
+        },
+        "usedIds": {
+          "/cQY": "/cQY",
+          "9uxZ": "9uxZ",
+          "FZ+f": "FZ+f",
+          "IIP5": "IIP5",
+          "aKF9": "aKF9",
+          "gjOB": "gjOB",
+          "s+CG": "s+CG"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ],
+  "extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js??ref--6-4!node_modules/font-awesome/css/font-awesome.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js?{}!node_modules/font-awesome/css/font-awesome.css": "28Wb",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f",
+          "node_modules/url-loader/index.js??ref--7!node_modules/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0": "Fqd/",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0": "IMLV",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0": "cEaC",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/font-awesome/fonts/fontawesome-webfont.eot": "cmUn",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0": "jNsU",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0": "of+2"
+        },
+        "usedIds": {
+          "28Wb": "28Wb",
+          "FZ+f": "FZ+f",
+          "Fqd/": "Fqd/",
+          "IMLV": "IMLV",
+          "cEaC": "cEaC",
+          "cmUn": "cmUn",
+          "jNsU": "jNsU",
+          "of+2": "of+2"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/eslint-loader/index.js!app/index.js": "2twT",
+      "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--6-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js??ref--6-4!node_modules/font-awesome/css/font-awesome.css": "5W1q",
+      "node_modules/object-assign/index.js": "BEQ0",
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/eslint-loader/index.js!app/header/index.js": "BZMg",
+      "node_modules/react/index.js": "GiK3",
+      "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--6-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js??ref--6-4!app/assets/css/main.css": "Ilbf",
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/exports-loader/index.js?file,parse=helpers.parse!node_modules/eslint-loader/index.js!app/globals.js": "NvfI",
+      "node_modules/fbjs/lib/emptyObject.js": "TJez",
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/eslint-loader/index.js!app/component.js": "YL6N",
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/eslint-loader/index.js!app/main/index.js": "bm06",
+      "multi react": 0,
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/imports-loader/index.js?this=>window!node_modules/eslint-loader/index.js!app/local.js": "e1Sj",
+      "node_modules/fbjs/lib/emptyFunction.js": "e6+Q",
+      "node_modules/react/cjs/react.production.min.js": "vttU",
+      "node_modules/babel-loader/lib/index.js??ref--0!node_modules/babel-loader/lib/index.js!node_modules/eslint-loader/index.js!app/another.js": "iB1W"
+    },
+    "usedIds": {
+      "0": 0,
+      "2twT": "2twT",
+      "5W1q": "5W1q",
+      "BEQ0": "BEQ0",
+      "BZMg": "BZMg",
+      "GiK3": "GiK3",
+      "Ilbf": "Ilbf",
+      "NvfI": "NvfI",
+      "TJez": "TJez",
+      "YL6N": "YL6N",
+      "bm06": "bm06",
+      "e1Sj": "e1Sj",
+      "e6+Q": "e6+Q",
+      "vttU": "vttU",
+      "iB1W": "iB1W"
+    }
+  },
+  "chunks": {
+    "byName": {
+      "vendor": 0,
+      "app": 1,
+      "main": 2,
+      "header": 3,
+      "common": 4,
+      "manifest": 5,
+      "another": 6
+    },
+    "byBlocks": {},
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6
+    }
+  },
+  "html-webpack-plugin for \"another/index.html\"": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/webpack/buildin/module.js": "3IRH",
+          "node_modules/webpack/buildin/global.js": "DuR2",
+          "node_modules/lodash/lodash.js": "M4fF",
+          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-plugin/default_index.ejs": "a/t9"
+        },
+        "usedIds": {
+          "3IRH": "3IRH",
+          "DuR2": "DuR2",
+          "M4fF": "M4fF",
+          "a/t9": "a/t9"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ]
+}

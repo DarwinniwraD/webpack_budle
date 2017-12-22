@@ -2,13 +2,74 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const SpritesmithPlugin = require('webpack-spritesmith');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssNano = require('cssnano')
+
+var ImageminPlugin = require('imagemin-webpack-plugin').default
 
 const path = require('path');
 
 exports.extractBundles = bundles => ({
   plugins: bundles.map(
     bundle => new webpack.optimize.CommonsChunkPlugin(bundle)
-  )
+  ),
+});
+
+exports.clean = path => ({
+  plugins: [new CleanWebpackPlugin([path])],
+});
+
+exports.minifyCSS = ({options}) => ({
+  plugins: [
+    new OptimizeCSSAssetsPlugin({
+      cssProcessor: CssNano,
+      cssProcessorOptions: options,
+      canPrint: false,
+    })
+  ]
+});
+
+exports.minifyImage = ({options}) => ({
+  plugins: [
+    new ImageminPlugin({
+      disable: process.env.NODE_ENV !== 'production',
+      options,
+    })
+  ]
+});
+
+exports.setFreeVariable = (key, value) => { //定义环境变量
+  const env = {};
+  env[key] = JSON.stringify(value);
+
+  return {
+    plugins: [new webpack.DefinePlugin(env)],
+  };
+};
+
+exports.page = (
+  {
+    path = "",
+    template = require.resolve(
+      "html-webpack-plugin/default_index.ejs"
+    ),
+    title,
+    entry,
+    chunks,
+  } = {}
+) => ({
+  entry,
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: `${path&&path + '/'}index.html`,
+      template,
+      title,
+      chunks
+    })
+  ]
 })
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -65,8 +126,8 @@ exports.loadCSS = ({ include, exclude} = {}) => ({
             loader: 'px2rem-loader',
             options: {
               remUnit: 75,
-              remPrecision: 5
-            }
+              remPrecision: 5,
+            },
           },
           'sass-loader',
         ],
@@ -110,7 +171,7 @@ exports.loadCSS = ({ include, exclude} = {}) => ({
 exports.extractCSS = ({include, exclude, use}) => {
   const plugin = new ExtractTextPlugin({
     allChunks: true,
-    filename: '[name].css',
+    filename: '[name].[contenthash:8].css',
   });
   return {
     module: {
@@ -177,7 +238,7 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
         include,
         exclude,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options,
         },
       },
@@ -192,7 +253,7 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
         test: /\.js$/,
         include,
         exclude,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
     ],
   },

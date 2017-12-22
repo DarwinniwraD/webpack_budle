@@ -42,8 +42,29 @@ const commonConfig = merge([
 
 module.exports = (env) => {
   console.log('\x1b[31m%s\x1b[0m%s', 'env => ', env);
-  if (env === 'production') {
-    return merge(commonConfig, productionConfig);
-  }
-  return merge(commonConfig, developmentConfig);
+  // if (env === 'production') {
+  //   return merge(commonConfig, productionConfig);
+  // }
+  // return merge(commonConfig, developmentConfig);
+  const pages = [
+    parts.page({
+      title: "webpack demo",
+      entry: {
+        app: PATHS.app,
+      },
+      chunks: ["app", "manifest", "vendor"],
+    }),
+    parts.page({
+      title: "another page", 
+      path: "another",
+      entry: {
+        another: path.join(PATHS.app, "another.js"),
+      },
+      chunks: ["another", "manifest", "vendor"],
+    }),
+  ];
+  const config = env === 'production'
+                ? productionConfig : developmentConfig;
+  // return pages.map(page => merge(commonConfig, config, page))
+  return merge([commonConfig, config].concat(pages));
 };
